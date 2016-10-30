@@ -41,7 +41,7 @@ void test(int A[], int n, int B[], int size)
 
     int len = s.removeDuplicates(A, n);
     print(A, len);
-    assert(len = size);
+    assert(len == size);
 
     for (int i = 0; i < len; i++)
         assert(A[i] == B[i]);
