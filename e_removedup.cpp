@@ -22,23 +22,22 @@ int removedup2(vector<int> &nums) {
     return distance(nums.begin(), unique(nums.begin(), nums.end()));
 }
 
-int removedup3(vector<int> &nums) {
-    //return distance(nums.begin(), removedup3(nums.begin(), nums.end(), nums.begin()));
-    vector<int>::iterator first = nums.begin(), last = nums.end();
-
-    removedup3(first, last, first);
-    return 1;
-}
-
 template<typename InIt, typename OutIt>
-OutIt removedup3(InIt first, InIt last, OutIt out) {
+OutIt removedupx(InIt first, InIt last, OutIt out) {
     while (first != last) {
         *out++ = *first;
-        first = upper_bound(first, last, first);
+        first = upper_bound(first, last, *first);
     }
 
     return out;
 }
+int removedup3(vector<int> &nums) {
+    //return distance(nums.begin(), removedup3(nums.begin(), nums.end(), nums.begin()));
+    vector<int>::iterator first = nums.begin(), last = nums.end();
+
+    return distance(nums.begin(), removedupx(first, last, first));
+}
+
 
 int main()
 {
